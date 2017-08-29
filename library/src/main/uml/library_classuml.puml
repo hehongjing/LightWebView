@@ -1,0 +1,102 @@
+@startuml
+class SinaWebView{
+  //核心封装的WebView继承自系统\nWebView
+  private List<>
+}
+
+class SystemWebView{
+  //..system method
+  //系统WebView
+}
+
+interface IWebViewProxyInter{
+//WebView代理类抽象接口
+}
+
+class SinaWebViewProxy{
+ //WebView增强代理类
+}
+
+interface IJsPromptEventActionInter{
+//JSPrompt拦截时间接口
+}
+
+interface IJsPromptParserInter{
+//JSPrompt解析器抽象接口
+}
+
+abstract class JsPromptParser{
+//解析器抽象类
+}
+
+abstract class JsPromptEventAction{
+//JSPrompt拦截事件抽象类
+}
+
+class DisplayWebViewOptions{
+//WebView配置类
+}
+
+class WebViewServiceManager{
+//WebView服务管理类
+ void setWebRootView(int root_resid,Context context)
+ void setWebRootView(ViewGroup rootView,Context context)
+ /...
+}
+
+class JsPromptEventDispatcher{
+//JSPrompt事件调度员
+}
+
+
+
+SystemWebView <|-- SinaWebView
+
+IWebViewProxyInter <|-- SinaWebViewProxy
+
+IJsPromptEventActionInter <|-- JsPromptEventAction
+
+IJsPromptParserInter <|-- JsPromptParser
+
+SinaWebViewProxy *-- SinaWebView
+
+WebViewServiceManager *-- SinaWebViewProxy
+
+WebViewServiceManager *-- DisplayWebViewOptions
+
+SinaWebViewProxy *-- JsPromptEventDispatcher
+
+JsPromptEventDispatcher o-- JsPromptParser
+
+JsPromptEventDispatcher o-- JsPromptEventAction
+
+
+
+
+/'abstract class AbstractList{
+  update()
+  six()
+}
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}'/
+
+@enduml
